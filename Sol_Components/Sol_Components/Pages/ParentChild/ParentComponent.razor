@@ -1,0 +1,26 @@
+﻿@page "/parent"
+
+
+@code {
+
+    private String Title { get; set; }
+
+    public void ClickHandler()
+    {
+        Title = "Hello";
+    }
+
+    public void ClickHandlerSendData(string str)
+    {
+        Title = str;
+    }
+
+}
+
+
+<h3>ParentComponent</h3>
+
+<ChildComponent Title="@Title" OnClick="@ClickHandler" OnClickString="@ClickHandlerSendData">
+    Content of the child component is supplied
+    by the parent component.
+</ChildComponent>

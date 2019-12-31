@@ -1,0 +1,31 @@
+﻿@page "/child"
+
+
+@code {
+
+    [Parameter]
+    public String Title { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+    [Parameter]
+    public EventCallback<String> OnClickString { get; set; }
+
+}
+
+    <h3>ChildComponent</h3>
+
+    <div class="panel panel-default bg-dark text-white">
+        <div class="panel-heading">@Title</div>
+        <div class="panel-body">@ChildContent</div>
+
+        <button class="btn btn-primary" @onclick="OnClick">
+            Trigger a Parent component method
+        </button>
+
+        <button @onclick="@(async () => await OnClickString.InvokeAsync("Hello From Child") )">Click me</button>
+    </div>
